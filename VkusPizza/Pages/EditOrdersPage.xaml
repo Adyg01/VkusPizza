@@ -1,0 +1,49 @@
+﻿<Page x:Class="VkusPizza.Pages.EditOrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VkusPizza.Pages"
+      xmlns:xctk = "http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditOrdersPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" FontSize="24" Text="Имя заказчика"></TextBlock>
+        <TextBlock Grid.Row="1" FontSize="24" Text="Номер телефона"></TextBlock>
+        <TextBlock Grid.Row="2" FontSize="24" Text="Адрес(улица)"></TextBlock>
+        <TextBlock Grid.Row="3" FontSize="24" Text="Адрес(дом)"></TextBlock>
+        <TextBlock Grid.Row="6" FontSize="24" Text="Стоимость"></TextBlock>
+        <TextBlock Grid.Row="4" FontSize="24" Text="Дата\время заказа"></TextBlock>
+        <TextBlock Grid.Row="5" FontSize="24" Text="Вариант оплаты"></TextBlock>
+        <TextBlock Grid.Row="7" FontSize="24" Text="Товар"></TextBlock>
+        <TextBox Name="txtBoxOrderName" Text="{Binding CustomerName}" Grid.Column="1" Grid.Row="0" Width="450" ></TextBox>
+        <xctk:MaskedTextBox Name="txtBoxOrderPhone" Text="{Binding CustomerPhone}" Grid.Column="1" Grid.Row="1" Width="450" Height="30" Mask="+7(000)-000-0000"></xctk:MaskedTextBox> 
+        <TextBox Name="txtBoxOrderStreet" Text="{Binding DeliveryStreet}" Grid.Column="1" Grid.Row="2" Width="450"></TextBox>
+        <TextBox Name="txtBoxOrderHouse" Text="{Binding DeliveryHome}" Grid.Column="1" Grid.Row="3" Width="450"></TextBox>
+        <TextBox Name="txtBoxOrderCost" Text="{Binding Cost}" Grid.Column="1" Grid.Row="6" Width="450"></TextBox>
+        <xctk:MaskedTextBox Name="txtBoxOrderDateTime" Text="{Binding DateTime, StringFormat=dd.MM.yyyy HH:mm:ss}" Grid.Column="1" Grid.Row="4" Width="450" Mask="00/00/0000 00:00:00" Height="30"></xctk:MaskedTextBox>
+        <ComboBox Name="comboBoxOrderPaymenth" DisplayMemberPath="Payments" SelectedItem="{Binding PaymentMethod}" Grid.Column="1" Grid.Row="5" Width="450"></ComboBox>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="7" HorizontalAlignment="Center">
+            <TextBox IsEnabled="False" Name="txtBoxOrderProduct" Text="{Binding Product}" Width="250" ></TextBox>
+            <Button Name="btnAddProduct" Click="btnAddProduct_Click" Content="Добавить товар"></Button>
+        </StackPanel>
+        <Button Name="btnUserSaveChanges" Content="Сохранить" Grid.Column="1" Grid.Row="8" Click="btnUserSaveChanges_Click"></Button>
+    </Grid>
+</Page>

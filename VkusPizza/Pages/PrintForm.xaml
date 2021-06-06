@@ -1,0 +1,33 @@
+﻿<Page x:Class="VkusPizza.Pages.PrintForm"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VkusPizza.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PrintForm">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Button Width="120" Name="btnPrint" HorizontalAlignment="Right" Content="Печать" Grid.Row="1" Click="btnPrint_Click">
+            </Button>
+            <FlowDocumentScrollViewer Grid.Row="0" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden">
+            <FlowDocument Name="docHistoryOrdersPrint">
+                <BlockUIContainer>
+                    <DataGrid AutoGenerateColumns="False" Name="dGridHistoryOrders" IsReadOnly="True" RowHeaderWidth="0" BorderThickness="1">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Номер заказа" Binding="{Binding Order.Id}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Цена" Binding="{Binding Price}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Фамилия кассира" Binding="{Binding UserName}" Width="*"></DataGridTextColumn>
+                            <DataGridTextColumn Header="Статус" Binding="{Binding Status}" Width="*"></DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
+    </Grid>
+</Page>

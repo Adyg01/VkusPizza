@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VkusPizza"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="500" Width="1000" MinWidth="1000" MinHeight="450">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="190"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Background="YellowGreen" Grid.RowSpan="2">
+        </Grid>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <TextBlock Text="Vkus Pizza" FontSize="28" Foreground="Black"  HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
+            <Image Name="imgUser" Height="140" Width="140"></Image>
+        </StackPanel>
+        <Image Source="Resources/logo1.png" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="100" Height="75"></Image>
+        <Grid Grid.Row="3" Background="YellowGreen" Grid.Column="0">
+            <Button Margin="0,0,0,3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Выход" Name="btnExit" Click="btnExit_Click" ></Button>
+        </Grid>
+        <Border Grid.Row="2" Grid.Column="2" BorderThickness="1" BorderBrush="Gray">
+            <Grid>
+                <Grid.Background>
+                    <SolidColorBrush Color="#FF227054" Opacity="0.9"/>
+                </Grid.Background>
+                <TextBlock Foreground="White" Margin="5" Name="txtCurrentUser" FontSize="20"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+        </Border>
+        <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Grid.RowSpan="2" ContentRendered="mainFrame_ContentRendered"  Name="mainFrame"></Frame>
+        <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+            <Button Content="Заказы" Name="btnOrder" Click="btnOrder_Click" ></Button>
+            <Button Content="История заказов" Name="btnOrderHistory" Click="btnOrderHistory_Click" ></Button>
+            <Button Content="Пользователи" Name="btnUser" Click="btnUser_Click"></Button>
+            <Button Content="История входа" Name="btnHistory" Click="btnHistory_Click"></Button>
+            <Button Content="Назад" Name="btnBack" Click="btnBack_Click" ></Button>
+        </StackPanel>
     </Grid>
 </Window>

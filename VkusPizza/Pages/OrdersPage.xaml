@@ -1,0 +1,76 @@
+﻿<Page x:Class="VkusPizza.Pages.OrdersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:VkusPizza.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="OrdersPage" IsVisibleChanged="Page_IsVisibleChanged">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Поиск:" VerticalAlignment="Center"></TextBlock>
+                <TextBox x:Name="txtBoxSearch" Margin="33,0,0,0" TextChanged="txtBoxSearch_TextChanged"></TextBox>
+            </StackPanel>
+        </StackPanel>
+        <Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="По вашему запросу ничего не найдено!" Name="labelSearchBad"></Label>
+        <DataGrid Grid.Row="1" AutoGenerateColumns="False" Name="dGridOrder" IsReadOnly="True" VerticalAlignment="Top" RowHeaderWidth="0">
+            <DataGrid.ItemContainerStyle>
+                <Style TargetType="DataGridRow">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IdStatus}" Value="1">
+                            <Setter Property="Background" Value="White"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IdStatus}" Value="2">
+                            <Setter Property="Background" Value="#FFD63A24"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IdStatus}" Value="3">
+                            <Setter Property="Background" Value="#FF23E61A"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.ItemContainerStyle>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер заказа" Binding="{Binding Id}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя заказчика" Binding="{Binding CustomerName}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding CustomerPhone}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Адрес доставки" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="{Binding DeliveryStreet}" Grid.Row="0"></TextBlock>
+                                <TextBlock Text="{Binding DeliveryHome}" Grid.Row="1"></TextBlock>
+                            </Grid>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Cost}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дата\время заказа" Binding="{Binding DateTime}" Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Вариант оплаты" Binding="{Binding PaymentMethod.Payments}" Width="*"></DataGridTextColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Редактировать заказ" Name="btnReEditOrder" Click="btnReEditOrder_Click"></Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Row="2" Name="btnEditOrder" Content="Добавить заказ" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="btnEditOrder_Click"></Button>
+        <Button Grid.Row="2" Name="btnDeleteOrder" Content="Отменить заказ" VerticalAlignment="Bottom" HorizontalAlignment="Right" Click="btnDeleteOrder_Click"></Button>
+        <Button Grid.Row="2" Name="btnCompleteOrder" Content="Завершить заказ" VerticalAlignment="Bottom" HorizontalAlignment="Center" Click="btnCompleteOrder_Click"></Button>
+    </Grid>
+</Page>
