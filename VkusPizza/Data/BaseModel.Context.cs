@@ -16,7 +16,6 @@ namespace VkusPizza.Data
     public partial class DBVkusPizaaEntities : DbContext
     {
         private static DBVkusPizaaEntities context;
-
         public static DBVkusPizaaEntities getContext()
         {
             if (context == null)
@@ -33,7 +32,6 @@ namespace VkusPizza.Data
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<CashRegister> CashRegister { get; set; }
         public virtual DbSet<HistoryEnter> HistoryEnter { get; set; }
         public virtual DbSet<HistoryOrders> HistoryOrders { get; set; }
         public virtual DbSet<Order> Order { get; set; }

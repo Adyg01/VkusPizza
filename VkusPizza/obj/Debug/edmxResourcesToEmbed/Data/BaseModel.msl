@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище DBVkusPizaaModelContainer" CdmEntityContainer="DBVkusPizaaEntities">
-    <EntitySetMapping Name="CashRegister">
-      <EntityTypeMapping TypeName="DBVkusPizaaModel.CashRegister">
-        <MappingFragment StoreEntitySet="CashRegister">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-          <ScalarProperty Name="Date" ColumnName="Date" />
-          <ScalarProperty Name="SartAmount" ColumnName="SartAmount" />
-          <ScalarProperty Name="AmountDay" ColumnName="AmountDay" />
-          <ScalarProperty Name="FinalAmount" ColumnName="FinalAmount" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="HistoryEnter">
       <EntityTypeMapping TypeName="DBVkusPizaaModel.HistoryEnter">
         <MappingFragment StoreEntitySet="HistoryEnter">

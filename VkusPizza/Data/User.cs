@@ -17,7 +17,6 @@ namespace VkusPizza.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.CashRegister = new HashSet<CashRegister>();
             this.HistoryEnter = new HashSet<HistoryEnter>();
         }
     
@@ -28,8 +27,6 @@ namespace VkusPizza.Data
         public string Password { get; set; }
         public int TypeRole { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CashRegister> CashRegister { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HistoryEnter> HistoryEnter { get; set; }
         public virtual Role Role { get; set; }

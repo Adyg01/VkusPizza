@@ -16,7 +16,7 @@ namespace VkusPizza.Data
     {
         public int Id { get; set; }
         public int IdProduct { get; set; }
-        public string PhotoPath { get; set; }
+        public byte[] PhotoPath { get; set; }
     
         public virtual Product Product { get; set; }
     }

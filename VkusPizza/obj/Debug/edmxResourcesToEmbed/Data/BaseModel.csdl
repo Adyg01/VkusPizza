@@ -1,17 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DBVkusPizaaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="CashRegister">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdUser" Type="Int32" Nullable="false" />
-    <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="SartAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="AmountDay" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <Property Name="FinalAmount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-    <NavigationProperty Name="User" Relationship="Self.FK_CashRegister_User" FromRole="CashRegister" ToRole="User" />
-  </EntityType>
   <EntityType Name="HistoryEnter">
     <Key>
       <PropertyRef Name="Id" />
@@ -77,7 +65,7 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdProduct" Type="Int32" Nullable="false" />
-    <Property Name="PhotoPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PhotoPath" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
     <NavigationProperty Name="Product" Relationship="Self.FK_ProductPhoto_Product" FromRole="ProductPhoto" ToRole="Product" />
   </EntityType>
   <EntityType Name="ProductSale">
@@ -127,22 +115,9 @@
     <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="TypeRole" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="CashRegister" Relationship="Self.FK_CashRegister_User" FromRole="User" ToRole="CashRegister" />
     <NavigationProperty Name="HistoryEnter" Relationship="Self.FK_HistoryEnter_User" FromRole="User" ToRole="HistoryEnter" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
   </EntityType>
-  <Association Name="FK_CashRegister_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
-    <End Role="CashRegister" Type="Self.CashRegister" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="CashRegister">
-        <PropertyRef Name="IdUser" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_HistoryEnter_User">
     <End Role="User" Type="Self.User" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -252,7 +227,6 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="DBVkusPizaaEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="CashRegister" EntityType="Self.CashRegister" />
     <EntitySet Name="HistoryEnter" EntityType="Self.HistoryEnter" />
     <EntitySet Name="HistoryOrders" EntityType="Self.HistoryOrders" />
     <EntitySet Name="Order" EntityType="Self.Order" />
@@ -264,10 +238,6 @@
     <EntitySet Name="Status" EntityType="Self.Status" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
     <EntitySet Name="User" EntityType="Self.User" />
-    <AssociationSet Name="FK_CashRegister_User" Association="Self.FK_CashRegister_User">
-      <End Role="User" EntitySet="User" />
-      <End Role="CashRegister" EntitySet="CashRegister" />
-    </AssociationSet>
     <AssociationSet Name="FK_HistoryEnter_User" Association="Self.FK_HistoryEnter_User">
       <End Role="User" EntitySet="User" />
       <End Role="HistoryEnter" EntitySet="HistoryEnter" />
